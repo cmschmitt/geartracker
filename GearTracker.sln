@@ -3,11 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{30805DF0-E2E3-4049-A6A2-6305B8CECC64}"
-	ProjectSection(SolutionItems) = preProject
-		InitializationScript.sql = InitializationScript.sql
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GearTracker.ConsoleApp", "GearTracker.Console\GearTracker.ConsoleApp.csproj", "{BFFF95FA-B44B-4807-9522-8F1DBB069761}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GearTrackerData", "GearTrackerData\GearTrackerData.csproj", "{2FCD1B75-FE22-453A-A761-D3FD438AAD9C}"

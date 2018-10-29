@@ -7,12 +7,13 @@ namespace GearTrackerServices.Interfaces
 {
     public interface ITrackingService
     {
+        IEnumerable<GearTrackerData.Models.Action> GetActions();
         IEnumerable<Item> GetItems();
         IEnumerable<Location> GetLocations();
         IEnumerable<TrackingHistory> GetTrackingHistories();
-        void CheckInOutItem(string rfidItem, string rfidLocation, DateTime checkInOutTime, string action);
+        void CheckInOutItem(string rfidItem, string rfidLocation, DateTime checkInOutTime, int actionId);
         Location GetCurrentItemLocation(Item item);
-        IEnumerable<TrackingHistory> GetAllTrackingHistoryForItem(string rfidItem);
+        IEnumerable<TrackingHistory> GetAllTrackingHistoryForItem(Item item);
         Item GetItem(string rfid);
         Location GetLocation(string rfid);
         TrackingHistory GetLatestTrackingHistoryForItem(string rfid);

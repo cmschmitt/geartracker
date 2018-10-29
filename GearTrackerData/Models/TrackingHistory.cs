@@ -12,6 +12,6 @@ namespace GearTrackerData.Models
         public int ItemId { get; set; }
         public DateTime Date { get; set; }
         public int LocationId { get; set; }
-        public string Action { get; set; }
+        public int ActionId { get; set; }
     }
 }

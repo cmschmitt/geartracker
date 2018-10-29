@@ -21,8 +21,9 @@ namespace GearTrackerData.Implementations
             base.OnModelCreating(modelBuilder);
         }
 
-        public virtual DbSet<Item> Item { get; set; }
-        public virtual DbSet<Location> Location { get; set; }
-        public virtual DbSet<TrackingHistory> TrackingHistory { get; set; }
+        public virtual DbSet<Item> Items { get; set; }
+        public virtual DbSet<Location> Locations { get; set; }
+        public virtual DbSet<TrackingHistory> TrackingHistories { get; set; }
+        public virtual DbSet<Models.Action> Actions { get; set; }
     }
 }

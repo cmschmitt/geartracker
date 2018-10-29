@@ -15,7 +15,7 @@ namespace GearTrackerServices
             _unitOfWork = unitOfWork;
         }
 
-        public void CheckInOutItem(string rfidItem, string rfidLocation, DateTime checkInTime, string action)
+        public void CheckInOutItem(string rfidItem, string rfidLocation, DateTime checkInTime, int actionId)
         {
             var item = GetItem(rfidItem);
             var location = GetLocation(rfidLocation);
@@ -26,7 +26,7 @@ namespace GearTrackerServices
                     Date = checkInTime,
                     ItemId = item.Id,
                     LocationId = location.Id,
-                    Action = action
+                    ActionId = actionId
                 };
                 _unitOfWork.TrackingHistoryRepository.Add(newTrackingHistory);
             }
@@ -68,7 +68,16 @@ namespace GearTrackerServices
 
         public Location GetCurrentItemLocation(Item item)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var lastTrackingHistory = _unitOfWork.TrackingHistoryRepository.Find(t => t.ItemId == item.Id && t.ActionId == 1).OrderByDescending(t => t.Date).FirstOrDefault();
+                var location = _unitOfWork.LocationRepository.Find(l => l.Id == lastTrackingHistory.LocationId).FirstOrDefault();
+                return location;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public IEnumerable<Item> GetItems()
@@ -86,14 +95,27 @@ namespace GearTrackerServices
             return _unitOfWork.TrackingHistoryRepository.GetAll();
         }
 
-        public IEnumerable<TrackingHistory> GetAllTrackingHistoryForItem(string rfidItem)
+        public IEnumerable<TrackingHistory> GetAllTrackingHistoryForItem(Item item)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return _unitOfWork.TrackingHistoryRepository.Find(t => t.ItemId == item.Id);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         public TrackingHistory GetLatestTrackingHistoryForItem(string rfid)
         {
             throw new NotImplementedException();
+        }
+
+        public IEnumerable<GearTrackerData.Models.Action> GetActions()
+        {
+            return _unitOfWork.ActionRepository.GetAll();
         }
     }
 }

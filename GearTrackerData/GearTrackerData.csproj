@@ -48,6 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Implementations\Repository.cs" />
+    <Compile Include="Migrations\201810292257079_InitialCreate.cs" />
+    <Compile Include="Migrations\201810292257079_InitialCreate.Designer.cs">
+      <DependentUpon>201810292257079_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Action.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Implementations\GearTrackingContext.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
@@ -62,6 +68,11 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201810292257079_InitialCreate.resx">
+      <DependentUpon>201810292257079_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

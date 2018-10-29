@@ -19,6 +19,8 @@ namespace GearTracker.ConsoleApp
         public void Run()
         {
             var list = _trackingService.GetItems();
+            var test = _trackingService.GetCurrentItemLocation(list.FirstOrDefault());
+            Console.WriteLine($"{test.Name}{Environment.NewLine}");
             foreach (var l in list)
             {
                 Console.WriteLine($"{l.Name}{Environment.NewLine}");

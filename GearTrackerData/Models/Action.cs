@@ -1,9 +1,8 @@
 ﻿namespace GearTrackerData.Models
 {
-    public class Item
+    public class Action
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Rfid { get; set; }
     }
 }

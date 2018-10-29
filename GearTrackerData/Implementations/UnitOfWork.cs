@@ -10,6 +10,7 @@ namespace GearTrackerData.Implementations
     {
         private readonly GearTrackingContext _context;
         private IRepository<Item> _itemRepository;
+        private IRepository<Models.Action> _actionRepository;
         private IRepository<Location> _locationRepository;
         private IRepository<TrackingHistory> _trackingHistoryRepository;
         private bool disposed = false;
@@ -39,6 +40,13 @@ namespace GearTrackerData.Implementations
             get
             {
                 return _trackingHistoryRepository ?? new Repository<TrackingHistory>(_context);
+            }
+        }
+        public IRepository<Models.Action> ActionRepository
+        {
+            get
+            {
+                return _actionRepository ?? new Repository<Models.Action>(_context);
             }
         }
 

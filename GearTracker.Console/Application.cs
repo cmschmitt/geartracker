@@ -25,7 +25,7 @@ namespace GearTracker.ConsoleApp
             {
                 Console.WriteLine($"{l.Name}{Environment.NewLine}");
             }
-            
+
         }
     }
 }

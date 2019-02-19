@@ -16,11 +16,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Bootstrapping\AutofacBootstrapper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Bootstrapping\Bootstrapper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Bootstrapping\Modules\GearListModule.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Bootstrapping\Modules\LoginModule.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Bootstrapping\Modules\MainModule.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Bootstrapping\Modules\GearTrackerAutofacModule.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\BoolToColorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\InverseBoolConverter.cs" />

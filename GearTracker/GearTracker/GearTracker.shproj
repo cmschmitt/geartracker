@@ -7,12 +7,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Bootstrapping\AutofacBootstrapper.cs" />
-    <Compile Include="Bootstrapping\Bootstrapper.cs" />
-    <Compile Include="Bootstrapping\Modules\GearListModule.cs" />
     <Compile Include="Bootstrapping\Modules\GearTrackerAutofacModule.cs" />
-    <Compile Include="Bootstrapping\Modules\LoginModule.cs" />
-    <Compile Include="Bootstrapping\Modules\MainModule.cs" />
     <Compile Include="Converters\BoolToColorConverter.cs" />
     <Compile Include="Converters\InverseBoolConverter.cs" />
     <Compile Include="DataAccess\Entities\Item.cs" />

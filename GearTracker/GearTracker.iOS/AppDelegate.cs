@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using Autofac;
 using Foundation;
 using UIKit;
 
@@ -23,7 +23,8 @@ namespace GearTracker.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
+            ContainerBuilder builder = new ContainerBuilder();
+            LoadApplication(new App(builder));
 
             return base.FinishedLaunching(app, options);
         }

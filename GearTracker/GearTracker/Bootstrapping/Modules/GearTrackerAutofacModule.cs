@@ -11,7 +11,7 @@ using Xamarin.Forms;
 using System.IO;
 using GearTracker.DataAccess;
 using GearTracker.DataAccess.Interfaces;
-//using GearTracker.Droid.Services;
+using GearTracker.Views;
 
 namespace GearTracker.Bootstrapping.Modules
 {
@@ -39,8 +39,13 @@ string libraryPath = Path.Combine (documentsPath, "..", "Library"); // Library f
             builder.RegisterType<Navigator>().As<INavigator>().SingleInstance();
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().SingleInstance();
             builder.RegisterType<GearTrackingService>().SingleInstance();
-            //builder.RegisterType<DialogService>().As<IDialogService>().SingleInstance();
             builder.Register<INavigation>(context => App.Current.MainPage.Navigation).SingleInstance();
+            builder.RegisterType<MainView>().SingleInstance();
+            builder.RegisterType<MainViewModel>().SingleInstance();
+            builder.RegisterType<LoginView>().SingleInstance();
+            builder.RegisterType<LoginViewModel>().SingleInstance();
+            builder.RegisterType<GearListView>().SingleInstance();
+            builder.RegisterType<GearListViewModel>().SingleInstance();
         }
     }
 }

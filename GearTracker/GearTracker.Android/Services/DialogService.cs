@@ -29,7 +29,7 @@ namespace GearTracker.Droid.Services
                 });
                 
                 alert.Show();
-                //await Task.Yield();s
+                //await Task.Yield();
             }
             catch (Exception ex)
             {

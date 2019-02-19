@@ -10,14 +10,9 @@ namespace GearTracker.Bootstrapping
 {
     public abstract class AutofacBootstrapper
     {
-        private Dictionary<Type, Type> _mappedTypes;
-        public void RunWithMappedTypes(Dictionary<Type,Type> mappedTypes)
+        public void Run(ContainerBuilder builder)
         {
-            _mappedTypes = mappedTypes;
-            var builder = new ContainerBuilder();
-
             ConfigureContainer(builder);
-
             var container = builder.Build();
             var viewFactory = container.Resolve<IViewFactory>();
             RegisterViews(viewFactory);

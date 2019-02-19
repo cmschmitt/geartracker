@@ -6,22 +6,50 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using GearTracker.Bootstrapping;
 using System.Collections.Generic;
+using GearTracker.Bootstrapping.Modules;
+using GearTracker.Interfaces;
+using GearTracker.ViewModels;
+using GearTracker.Views;
 
 [assembly: XamlCompilation (XamlCompilationOptions.Compile)]
 namespace GearTracker
 {
 	public partial class App : Application
 	{
-		public App ()
+        private static IContainer _container;
+		public App (ContainerBuilder builder)
 		{
             //Entry point for application.
 			InitializeComponent();
-            var bootstrapper = new Bootstrapper(this);
-            Dictionary<Type, Type> mappedTypes = new Dictionary<Type, Type>();
-            bootstrapper.RunWithMappedTypes(mappedTypes);
+            BuildContainer(builder);
+            //var bootstrapper = new Bootstrapper(this);
+            //bootstrapper.Run(builder);
         }
 
-		protected override void OnStart ()
+        private void BuildContainer(ContainerBuilder builder)
+        {
+            builder.RegisterModule<GearTrackerAutofacModule>();
+            _container = builder.Build();
+            var viewFactory = _container.Resolve<IViewFactory>();
+            RegisterViews(viewFactory);
+            ConfigureApplication(viewFactory);
+        }
+
+        private void ConfigureApplication(IViewFactory viewFactory)
+        {
+            var mainPage = viewFactory.Resolve<MainViewModel>();
+            var navPage = new NavigationPage(mainPage);
+            MainPage = navPage;
+        }
+
+        private void RegisterViews(IViewFactory viewFactory)
+        {
+            viewFactory.Register<MainViewModel, MainView>();
+            viewFactory.Register<LoginViewModel, LoginView>();
+            viewFactory.Register<GearListViewModel, GearListView>();
+        }
+
+        protected override void OnStart ()
 		{
             // Handle when your app starts
 		}

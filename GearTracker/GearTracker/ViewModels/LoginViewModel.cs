@@ -11,11 +11,11 @@ namespace GearTracker.ViewModels
     {
         public string UserName { get; set; }
         public string Password { get; set; }
-        public LoginViewModel(INavigator navigator) //, IDialogService dialogService
+        public LoginViewModel(INavigator navigator, IDialogService dialogService)
         {
             Name = "Login";
             _navigator = navigator;
-            //_dialogService = dialogService;
+            _dialogService = dialogService;
         }
         public ICommand ValidateLogin
         {
@@ -25,11 +25,11 @@ namespace GearTracker.ViewModels
                 {
                     if(string.IsNullOrEmpty(UserName))
                     {
-                        //_dialogService.ShowDialogAsync("Must enter your username.");
+                        _dialogService.ShowDialogAsync("Must enter your username.");
                     }
                     if (string.IsNullOrEmpty(Password))
                     {
-                        //_dialogService.ShowDialogAsync("Must enter your password.");
+                        _dialogService.ShowDialogAsync("Must enter your password.");
                     }
                 });
             }

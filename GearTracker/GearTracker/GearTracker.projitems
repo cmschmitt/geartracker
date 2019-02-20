@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>{4640775F-3680-4A33-AAF4-DD037F34A774}</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>GearTracker</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)MainView.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\BoolToColorConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\InverseBoolConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataAccess\Entities\Item.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataAccess\Entities\TrackingAction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataAccess\Entities\TrackingHistory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataAccess\GearTrackingRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataAccess\Interfaces\IGearTrackingRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataAccess\Interfaces\IUnitOfWork.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataAccess\UnitOfWork.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Factories\ViewFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IDialogService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\INavigator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IViewFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Modules\GearTrackerAutofacModule.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\GearTrackingService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Navigator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BaseViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\GearListViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ItemViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LoginViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MainViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\GearListView.xaml.cs">
+      <DependentUpon>GearListView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\GearListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

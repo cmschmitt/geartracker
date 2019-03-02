@@ -33,10 +33,10 @@ string documentsPath = Environment.GetFolderPath (Environment.SpecialFolder.Pers
 string libraryPath = Path.Combine (documentsPath, "..", "Library"); // Library folder instead
 #endif
             var dbPath = Path.Combine(libraryPath, sqliteFilename);
-            builder.RegisterType<GearTrackingRepository>().WithParameter(new TypedParameter(typeof(string), dbPath)).AsImplementedInterfaces();
+            builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));
+            builder.RegisterType<GearTrackingContext>().WithParameter(new TypedParameter(typeof(string), dbPath));
             builder.RegisterType<ViewFactory>().As<IViewFactory>().SingleInstance();
             builder.RegisterType<Navigator>().As<INavigator>().SingleInstance();
-            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().SingleInstance();
             builder.RegisterType<GearTrackingService>().SingleInstance();
             builder.Register<INavigation>(context => App.Current.MainPage.Navigation).SingleInstance();
             builder.RegisterType<MainView>().SingleInstance();

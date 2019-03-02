@@ -1,5 +1,5 @@
-﻿using GearTracker.DataAccess.Entities;
-using GearTracker.DataAccess.Interfaces;
+﻿using GearTracker.DataAccess;
+using GearTracker.DataAccess.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,16 +9,15 @@ namespace GearTracker.Services
 {
     public class GearTrackingService
     {
-        private IUnitOfWork _unitOfWork;
-
-        public GearTrackingService(IUnitOfWork unitOfWork)
+        private GearTrackingContext _gearTrackingContext;
+        public GearTrackingService(GearTrackingContext gearTrackingContext)
         {
-            _unitOfWork = unitOfWork;
+            _gearTrackingContext = gearTrackingContext;
         }
 
         public async Task<List<Item>> GetItemsAsync()
         {
-            var result = await _unitOfWork.GearTrackingRepository.GetItemsAsync();
+            var result = await _gearTrackingContext.Items.GetAll();
             return result;
         }
     }

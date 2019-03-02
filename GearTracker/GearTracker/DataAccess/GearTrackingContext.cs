@@ -6,13 +6,18 @@ using System.IO;
 using GearTracker.DataAccess.Entities;
 using SQLite;
 using System.Threading.Tasks;
+using System.Linq.Expressions;
 
 namespace GearTracker.DataAccess
 {
-    public class GearTrackingRepository : IGearTrackingRepository
+    public class GearTrackingContext
     {
         private SQLiteAsyncConnection _dbConnection;
-        public GearTrackingRepository(string dbPath)
+
+        public Repository<Item> Items { get; set; }
+        public Repository<TrackingHistory> TrackingHistories { get; set; }
+
+        public GearTrackingContext(string dbPath)
         {
             //object locker = new object(); // class level private field
             //                              // rest of class code
@@ -24,13 +29,15 @@ namespace GearTracker.DataAccess
             _dbConnection = new SQLiteAsyncConnection(dbPath);
             if (createDatabase)
                 CreateDatabase();
+            Items = new Repository<Item>(_dbConnection);
+            TrackingHistories = new Repository<TrackingHistory>(_dbConnection);
         }
 
         private void CreateDatabase()
         {
             try
             {
-                _dbConnection.CreateTablesAsync<Item, TrackingAction, TrackingHistory>();
+                _dbConnection.CreateTablesAsync<Item, TrackingHistory>();
                 var items = new List<Item>
                 {
                     new Item
@@ -54,19 +61,6 @@ namespace GearTracker.DataAccess
                         Name = "UMC404HD"
                     }
                 };
-                var actions = new List<TrackingAction>
-                {
-                    new TrackingAction
-                    {
-                        Id = 1,
-                        Name = "Check In"
-                    },
-                    new TrackingAction
-                    {
-                        Id = 2,
-                        Name = "Check Out"
-                    }
-                };
                 var histories = new List<TrackingHistory>
                 {
                     new TrackingHistory
@@ -74,7 +68,6 @@ namespace GearTracker.DataAccess
                         Id = 1,
                         Date = DateTime.Now.AddDays(-1),
                         ItemId = 1,
-                        TrackingActionId = 1,
                         Location = "Home"
                     },
                     new TrackingHistory
@@ -82,7 +75,6 @@ namespace GearTracker.DataAccess
                         Id = 2,
                         Date = DateTime.Now.AddDays(-1),
                         ItemId = 2,
-                        TrackingActionId = 1,
                         Location = "Home"
                     },
                     new TrackingHistory
@@ -90,7 +82,6 @@ namespace GearTracker.DataAccess
                         Id = 3,
                         Date = DateTime.Now.AddDays(-1),
                         ItemId = 3,
-                        TrackingActionId = 1,
                         Location = "Home"
                     },
                     new TrackingHistory
@@ -98,7 +89,6 @@ namespace GearTracker.DataAccess
                         Id = 4,
                         Date = DateTime.Now.AddDays(-1),
                         ItemId = 4,
-                        TrackingActionId = 1,
                         Location = "Home"
                     },
                     new TrackingHistory
@@ -106,12 +96,10 @@ namespace GearTracker.DataAccess
                         Id = 5,
                         Date = DateTime.Now,
                         ItemId = 1,
-                        TrackingActionId = 2,
                         Location = "1234 Some St, Cape Girardeau, MO 63701"
                     }
                 };
                 _dbConnection.InsertAllAsync(items);
-                _dbConnection.InsertAllAsync(actions);
                 _dbConnection.InsertAllAsync(histories);
             }
             catch (Exception ex)
@@ -119,28 +107,5 @@ namespace GearTracker.DataAccess
                 throw ex;
             }
         }
-
-        #region Queries
-
-        public async Task<List<Item>> GetItemsAsync()
-        {
-            var result = await _dbConnection.QueryAsync<Item>("SELECT * FROM Item");
-            return result;
-        }
-
-        public async Task<List<TrackingAction>> GetTrackingActionsAsync()
-        {
-            var result = await _dbConnection.QueryAsync<TrackingAction>("SELECT * FROM TrackingAction");
-            return result;
-        }
-
-        public async Task<List<TrackingHistory>> GetTrackingHistoriesAsync()
-        {
-            var result = await _dbConnection.QueryAsync<TrackingHistory>("SELECT * FROM TrackingHistory");
-            return result;
-        }
-
-
-        #endregion
     }
 }

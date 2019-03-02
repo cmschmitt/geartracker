@@ -5,10 +5,12 @@
              x:Class="GearTracker.MainView">
 
     <StackLayout>
-        <!-- Place new controls here -->
-    	<Label Text="Welcome to Xamarin.Forms!" 
+
+        <Label Text="Welcome to GearTracker!" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
+        <Button Text="Log In" Command="{Binding GoToLogin}"/>
+        <Button Text="View List" Command="{Binding ViewList}"/>
     </StackLayout>
 
 </ContentPage>

@@ -10,6 +10,5 @@ namespace GearTracker.DataAccess.Entities
         public int ItemId { get; set; }
         public DateTime Date { get; set; }
         public string Location { get; set; }
-        public int TrackingActionId { get; set; }
     }
 }

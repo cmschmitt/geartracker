@@ -16,10 +16,9 @@
                     <ViewCell>
                         <Grid Margin="5">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
-                            <Label Text="&#xf058;"
+                            <!--<Label Text="&#xf058;"
                                    FontSize="Small" 
                                    TextColor="{Binding CheckedIn, Converter={StaticResource boolToColor}}" 
                                    VerticalOptions="Center" 
@@ -36,9 +35,9 @@
                                    Grid.Column="0"
                                    IsVisible="{Binding CheckedIn, Converter={StaticResource inverseBool}}"
                                    FontFamily="{StaticResource FontAwesome}">
-                            </Label>
+                            </Label>-->
                             <Label Text="{Binding Name}"
-                                   Grid.Column="1"
+                                   Grid.Column="0"
                                    VerticalOptions="Center"/>
                         </Grid>
                     </ViewCell>

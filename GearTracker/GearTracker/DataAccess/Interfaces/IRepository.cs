@@ -11,6 +11,7 @@ namespace GearTracker.DataAccess.Interfaces
         Task<TEntity> Get(int id);
         Task<List<TEntity>> GetAll();
         Task<List<TEntity>> Find(Expression<Func<TEntity, bool>> predicate);
+        Task<TEntity> FindSingle(Expression<Func<TEntity, bool>> predicate);
 
         void Add(TEntity entity);
         void AddRange(IEnumerable<TEntity> entities);

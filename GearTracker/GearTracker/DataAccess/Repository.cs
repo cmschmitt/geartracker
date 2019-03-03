@@ -3,6 +3,7 @@ using SQLite;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,6 +37,16 @@ namespace GearTracker.DataAccess
                 table = table.Where(predicate);
 
             return await table.ToListAsync();
+        }
+
+        public async Task<TEntity> FindSingle(Expression<Func<TEntity, bool>> predicate)
+        {
+            var table = _dbConnection.Table<TEntity>();
+
+            if (predicate != null)
+                return await table.FirstOrDefaultAsync(predicate);
+            else
+                return null;
         }
 
         public void Add(TEntity entity)

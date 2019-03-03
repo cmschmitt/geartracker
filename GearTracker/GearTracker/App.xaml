@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GearTracker.App">
     <Application.Resources>
-        <OnPlatform x:Key="FontAwesome" x:TypeArguments="x:String">
+        <!--<OnPlatform x:Key="FontAwesome" x:TypeArguments="x:String">
             <On Platform="Android" Value="fa-regular-400.ttf#Font Awesome 5 Free Regular"/>
-        </OnPlatform>
+        </OnPlatform>-->
     </Application.Resources>
 </Application>

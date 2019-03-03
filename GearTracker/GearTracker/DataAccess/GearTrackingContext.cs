@@ -16,6 +16,7 @@ namespace GearTracker.DataAccess
 
         public Repository<Item> Items { get; set; }
         public Repository<TrackingHistory> TrackingHistories { get; set; }
+        public Repository<User> Users { get; set; }
 
         public GearTrackingContext(string dbPath)
         {
@@ -26,39 +27,50 @@ namespace GearTracker.DataAccess
             //    // Do your query or insert here
             //}
             bool createDatabase = !File.Exists(dbPath);
+            
             _dbConnection = new SQLiteAsyncConnection(dbPath);
             if (createDatabase)
                 CreateDatabase();
+#if DEBUG
+            File.Delete(dbPath);
+            CreateDatabase();
+#endif
             Items = new Repository<Item>(_dbConnection);
             TrackingHistories = new Repository<TrackingHistory>(_dbConnection);
+            Users = new Repository<User>(_dbConnection);
         }
 
         private void CreateDatabase()
         {
             try
             {
-                _dbConnection.CreateTablesAsync<Item, TrackingHistory>();
+                var users = new List<User> { new User { Id = 1, Name = "johndoe", Password = "password" } };
+                _dbConnection.CreateTablesAsync<Item, TrackingHistory, User>();
                 var items = new List<Item>
                 {
                     new Item
                     {
                         Id = 1,
-                        Name = "SM57"
+                        Name = "SM57",
+                        UserId = 1
                     },
                     new Item
                     {
                         Id = 2,
-                        Name = "SM58"
+                        Name = "SM58",
+                        UserId = 1
                     },
                     new Item
                     {
                         Id = 3,
-                        Name = "RC-30"
+                        Name = "RC-30",
+                        UserId = 1
                     },
                     new Item
                     {
                         Id = 4,
-                        Name = "UMC404HD"
+                        Name = "UMC404HD",
+                        UserId = 1
                     }
                 };
                 var histories = new List<TrackingHistory>
@@ -96,9 +108,10 @@ namespace GearTracker.DataAccess
                         Id = 5,
                         Date = DateTime.Now,
                         ItemId = 1,
-                        Location = "1234 Some St, Cape Girardeau, MO 63701"
+                        Location = "1234 Some St, Somewhere, CA 61234"
                     }
                 };
+                _dbConnection.InsertAllAsync(users);
                 _dbConnection.InsertAllAsync(items);
                 _dbConnection.InsertAllAsync(histories);
             }

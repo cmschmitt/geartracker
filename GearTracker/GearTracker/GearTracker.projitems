@@ -20,6 +20,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\InverseBoolConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataAccess\Entities\Item.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataAccess\Entities\TrackingHistory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataAccess\Entities\User.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataAccess\GearTrackingContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataAccess\Repository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Factories\ViewFactory.cs" />

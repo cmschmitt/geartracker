@@ -1,4 +1,5 @@
-﻿using GearTracker.Interfaces;
+﻿using GearTracker.DataAccess.Entities;
+using GearTracker.Interfaces;
 using GearTracker.Services;
 using System;
 using System.Collections.Generic;
@@ -10,14 +11,16 @@ namespace GearTracker.ViewModels
 {
     public class GearListViewModel : BaseViewModel
     {
-        public List<DataAccess.Entities.Item> Items { get; set; }
+        public List<Item> Items { get; set; }
         public bool IsLoading { get; set; }
         private GearTrackingService _gearTrackingService;
-        public GearListViewModel(INavigator navigator, GearTrackingService gearTrackingService)//, IDialogService dialogService
+        private User _user;
+        public GearListViewModel(User user, INavigator navigator, GearTrackingService gearTrackingService)//, IDialogService dialogService
         {
             Name = "GearList";
             _navigator = navigator;
             _gearTrackingService = gearTrackingService;
+            _user = user;
             //_dialogService = dialogService;
         }
 

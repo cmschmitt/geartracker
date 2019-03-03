@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GearTracker.iOS", "GearTrac
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "GearTracker", "GearTracker\GearTracker\GearTracker.shproj", "{4640775F-3680-4A33-AAF4-DD037F34A774}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GearTracker.Tests", "GearTracker.Tests\GearTracker.Tests.csproj", "{C38936D2-C0D7-43B1-9CCA-24899B24C279}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		GearTracker\GearTracker\GearTracker.projitems*{34fe132e-8844-452c-b5a4-887b7395de32}*SharedItemsImports = 4
@@ -102,6 +104,30 @@ Global
 		{34FE132E-8844-452C-B5A4-887B7395DE32}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
 		{34FE132E-8844-452C-B5A4-887B7395DE32}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 		{34FE132E-8844-452C-B5A4-887B7395DE32}.Release|iPhoneSimulator.Deploy.0 = Release|iPhoneSimulator
+		{C38936D2-C0D7-43B1-9CCA-24899B24C279}.Ad-Hoc|Any CPU.ActiveCfg = Release|Any CPU
+		{C38936D2-C0D7-43B1-9CCA-24899B24C279}.Ad-Hoc|Any CPU.Build.0 = Release|Any CPU
+		{C38936D2-C0D7-43B1-9CCA-24899B24C279}.Ad-Hoc|iPhone.ActiveCfg = Release|Any CPU
+		{C38936D2-C0D7-43B1-9CCA-24899B24C279}.Ad-Hoc|iPhone.Build.0 = Release|Any CPU
+		{C38936D2-C0D7-43B1-9CCA-24899B24C279}.Ad-Hoc|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{C38936D2-C0D7-43B1-9CCA-24899B24C279}.Ad-Hoc|iPhoneSimulator.Build.0 = Release|Any CPU
+		{C38936D2-C0D7-43B1-9CCA-24899B24C279}.AppStore|Any CPU.ActiveCfg = Release|Any CPU
+		{C38936D2-C0D7-43B1-9CCA-24899B24C279}.AppStore|Any CPU.Build.0 = Release|Any CPU
+		{C38936D2-C0D7-43B1-9CCA-24899B24C279}.AppStore|iPhone.ActiveCfg = Release|Any CPU
+		{C38936D2-C0D7-43B1-9CCA-24899B24C279}.AppStore|iPhone.Build.0 = Release|Any CPU
+		{C38936D2-C0D7-43B1-9CCA-24899B24C279}.AppStore|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{C38936D2-C0D7-43B1-9CCA-24899B24C279}.AppStore|iPhoneSimulator.Build.0 = Release|Any CPU
+		{C38936D2-C0D7-43B1-9CCA-24899B24C279}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C38936D2-C0D7-43B1-9CCA-24899B24C279}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C38936D2-C0D7-43B1-9CCA-24899B24C279}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{C38936D2-C0D7-43B1-9CCA-24899B24C279}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{C38936D2-C0D7-43B1-9CCA-24899B24C279}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{C38936D2-C0D7-43B1-9CCA-24899B24C279}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{C38936D2-C0D7-43B1-9CCA-24899B24C279}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C38936D2-C0D7-43B1-9CCA-24899B24C279}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C38936D2-C0D7-43B1-9CCA-24899B24C279}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{C38936D2-C0D7-43B1-9CCA-24899B24C279}.Release|iPhone.Build.0 = Release|Any CPU
+		{C38936D2-C0D7-43B1-9CCA-24899B24C279}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{C38936D2-C0D7-43B1-9CCA-24899B24C279}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

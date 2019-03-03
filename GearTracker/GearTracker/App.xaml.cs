@@ -7,14 +7,12 @@ using GearTracker.Interfaces;
 using GearTracker.ViewModels;
 using GearTracker.Views;
 
-
 [assembly: XamlCompilation (XamlCompilationOptions.Compile)]
 namespace GearTracker
 {
 	public partial class App : Application
 	{
         private static IContainer _container;
-
         public App (ContainerBuilder builder)
 		{
             InitializeComponent();
@@ -24,6 +22,7 @@ namespace GearTracker
         private void BuildContainer(ContainerBuilder builder)
         {
             builder.RegisterModule<GearTrackerAutofacModule>();
+            
             _container = builder.Build();
             var viewFactory = _container.Resolve<IViewFactory>();
             RegisterViews(viewFactory);
@@ -32,14 +31,14 @@ namespace GearTracker
 
         private void ConfigureApplication(IViewFactory viewFactory)
         {
-            var mainPage = viewFactory.Resolve<MainViewModel>();
+            var mainPage = viewFactory.Resolve<LoginViewModel>();
             var navPage = new NavigationPage(mainPage);
             MainPage = navPage;
         }
 
         private void RegisterViews(IViewFactory viewFactory)
         {
-            viewFactory.Register<MainViewModel, MainView>();
+            //viewFactory.Register<MainViewModel, MainView>();
             viewFactory.Register<LoginViewModel, LoginView>();
             viewFactory.Register<GearListViewModel, GearListView>();
         }

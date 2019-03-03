@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using GearTracker.DataAccess;
+using GearTracker.DataAccess.Entities;
 using GearTracker.DataAccess.Interfaces;
 using GearTracker.Factories;
 using GearTracker.Interfaces;
@@ -45,6 +46,7 @@ string libraryPath = Path.Combine (documentsPath, "..", "Library"); // Library f
             builder.RegisterType<LoginViewModel>().SingleInstance();
             builder.RegisterType<GearListView>().SingleInstance();
             builder.RegisterType<GearListViewModel>().SingleInstance();
+            builder.RegisterType<User>().SingleInstance();
         }
     }
 }

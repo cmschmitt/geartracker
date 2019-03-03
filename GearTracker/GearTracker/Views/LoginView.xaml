@@ -3,13 +3,30 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GearTracker.Views.LoginView"
              >
+    <ContentPage.Title>
+        GearTracker
+    </ContentPage.Title>
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="0,20,0,0"/>
+            <On Platform="Android" Value="0,0,0,0"/>
+        </OnPlatform>
+    </ContentPage.Padding>
     <ContentPage.Content>
-        <StackLayout Padding="10" Spacing="10">
-            <Label Text="Username"/>
-            <Entry Placeholder="username" Text="{Binding UserName}"/>
-            <Label Text="Password"/>
-            <Entry Placeholder="password" Text="{Binding Password}"/>
-            <Button Text="Log In" Command="{Binding ValidateLogin}"/>
-        </StackLayout>
+        <Grid BackgroundColor="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="1" Padding="10" Spacing="10">
+                <Label Text="Username"/>
+                <Entry Placeholder="username" Text="{Binding UserName}"/>
+                <Label Text="Password"/>
+                <Entry Placeholder="password" Text="{Binding Password}"/>
+                <Button Text="Log In" Command="{Binding ValidateLogin}"/>
+            </StackLayout>
+        </Grid>
+        
     </ContentPage.Content>
 </ContentPage>

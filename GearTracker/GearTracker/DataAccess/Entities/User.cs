@@ -4,12 +4,14 @@ using System.Text;
 
 namespace GearTracker.DataAccess.Entities
 {
-    public class Item
+    public class User
     {
+        public User()
+        {
+
+        }
         public int Id { get; set; }
-        public int UserId { get; set; }
         public string Name { get; set; }
-        public string Rfid { get; set; }
+        public string Password { get; set; }
     }
 }
-

@@ -1,4 +1,6 @@
-﻿using GearTracker.Interfaces;
+﻿using GearTracker.DataAccess.Entities;
+using GearTracker.Interfaces;
+using GearTracker.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,25 +13,39 @@ namespace GearTracker.ViewModels
     {
         public string UserName { get; set; }
         public string Password { get; set; }
-        public LoginViewModel(INavigator navigator, IDialogService dialogService)
+        private User _user { get; set; }
+        private GearTrackingService _gearTrackingService;
+        public LoginViewModel(User user, INavigator navigator, IDialogService dialogService, GearTrackingService gearTrackingService)
         {
             Name = "Login";
             _navigator = navigator;
             _dialogService = dialogService;
+            _gearTrackingService = gearTrackingService;
         }
         public ICommand ValidateLogin
         {
             get
             {
-                return new Command(() =>
+                return new Command(async () =>
                 {
-                    if (string.IsNullOrEmpty(UserName))
+                    if (string.IsNullOrEmpty(UserName) || string.IsNullOrEmpty(Password))
                     {
-                        _dialogService.ShowDialogAsync("Must enter your username.");
+                        _dialogService.ShowDialogAsync("Must enter your username and password.");
                     }
-                    if (string.IsNullOrEmpty(Password))
+                    else
                     {
-                        _dialogService.ShowDialogAsync("Must enter your password.");
+                        _user = await _gearTrackingService.GetUserAsync(UserName, Password);
+                        if(_user == null)
+                        {
+                            _dialogService.ShowDialogAsync("Invalid username and password.");
+                            UserName = null;
+                            Password = null;
+                            NotifyPropertyChanged("");
+                        }
+                        else
+                        {
+                            await _navigator.PushAsync<GearListViewModel>();
+                        }
                     }
                 });
             }

@@ -17,6 +17,7 @@ namespace GearTracker.DataAccess
         {
             _dbConnection = dbConnection;
         }
+
         #region Queries
 
         public async Task<TEntity> Get(int id)

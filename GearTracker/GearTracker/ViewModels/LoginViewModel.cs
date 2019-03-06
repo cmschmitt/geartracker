@@ -21,6 +21,7 @@ namespace GearTracker.ViewModels
             _navigator = navigator;
             _dialogService = dialogService;
             _gearTrackingService = gearTrackingService;
+            _user = user;
         }
         public ICommand ValidateLogin
         {
@@ -34,8 +35,8 @@ namespace GearTracker.ViewModels
                     }
                     else
                     {
-                        _user = await _gearTrackingService.GetUserAsync(UserName, Password);
-                        if(_user == null)
+                        var user = await _gearTrackingService.GetUserAsync(UserName, Password);
+                        if(user == null)
                         {
                             _dialogService.ShowDialogAsync("Invalid username and password.");
                             UserName = null;
@@ -44,6 +45,10 @@ namespace GearTracker.ViewModels
                         }
                         else
                         {
+                            //Update User singleton before creating new instance of GearListViewModel
+                            _user.Id = user.Id;
+                            _user.Name = user.Name;
+                            _user.Password = user.Password;
                             await _navigator.PushAsync<GearListViewModel>();
                         }
                     }

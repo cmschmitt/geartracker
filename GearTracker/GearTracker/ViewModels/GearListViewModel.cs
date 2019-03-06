@@ -30,9 +30,7 @@ namespace GearTracker.ViewModels
             {
                 return new Command(() =>
                 {
-
                     LoadItems();
-
                 });
             }
         }
@@ -43,7 +41,7 @@ namespace GearTracker.ViewModels
             {
                 IsLoading = true;
                 NotifyPropertyChanged("IsLoading");
-                Items = await _gearTrackingService.GetItemsAsync();
+                Items = await _gearTrackingService.GetUserItemsAsync(_user.Id);
                 IsLoading = false;
                 NotifyPropertyChanged("IsLoading");
                 NotifyPropertyChanged("Items");

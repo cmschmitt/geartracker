@@ -46,6 +46,7 @@ string libraryPath = Path.Combine (documentsPath, "..", "Library"); // Library f
             builder.RegisterType<LoginViewModel>().SingleInstance();
             builder.RegisterType<GearListView>().SingleInstance();
             builder.RegisterType<GearListViewModel>().SingleInstance();
+            //builder.Register(c => c.Resolve<User>());
             builder.RegisterType<User>().SingleInstance();
         }
     }

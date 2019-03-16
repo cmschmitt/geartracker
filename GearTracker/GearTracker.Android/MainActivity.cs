@@ -18,15 +18,24 @@ namespace GearTracker.Droid
 
         protected override void OnCreate(Bundle bundle)
         {
-            TabLayoutResource = Resource.Layout.Tabbar;
-            ToolbarResource = Resource.Layout.Toolbar;
+            try
+            {
+                TabLayoutResource = Resource.Layout.Tabbar;
+                ToolbarResource = Resource.Layout.Toolbar;
 
-            base.OnCreate(bundle);
+                base.OnCreate(bundle);
 
-            global::Xamarin.Forms.Forms.Init(this, bundle);
-            ContainerBuilder builder = new ContainerBuilder();
-            builder.RegisterType<DialogService>().As<IDialogService>();
-            LoadApplication(new App(builder));
+                global::Xamarin.Forms.Forms.Init(this, bundle);
+                ContainerBuilder builder = new ContainerBuilder();
+                builder.RegisterType<DialogService>().As<IDialogService>();
+                LoadApplication(new App(builder));
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            
         }
 
     }

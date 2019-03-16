@@ -13,5 +13,12 @@ namespace GearTracker.Interfaces
 
         Page Resolve<TViewModel>()
             where TViewModel : class, IViewModel;
+
+        void RegisterMaster<TViewModel, TView>()
+            where TViewModel : class, IViewModel
+            where TView : MasterDetailPage;
+
+        MasterDetailPage ResolveMaster<TViewModel>()
+            where TViewModel : class, IViewModel;
     }
 }

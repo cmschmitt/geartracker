@@ -9,12 +9,12 @@ using Xamarin.Forms.Xaml;
 
 namespace GearTracker.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class GearListView : ContentPage
-	{
-		public GearListView ()
-		{
-			InitializeComponent();
-		}
-	}
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class MainDetail : ContentPage
+    {
+        public MainDetail()
+        {
+            InitializeComponent();
+        }
+    }
 }

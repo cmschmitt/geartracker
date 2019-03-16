@@ -9,7 +9,6 @@ namespace GearTracker.ViewModels
 {
     public class BaseViewModel : IViewModel
     {
-        protected INavigator _navigator;
         protected IDialogService _dialogService;
         public string Name { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;

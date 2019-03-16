@@ -15,13 +15,11 @@ namespace GearTracker.ViewModels
         public bool IsLoading { get; set; }
         private GearTrackingService _gearTrackingService;
         private User _user;
-        public GearListViewModel(User user, INavigator navigator, GearTrackingService gearTrackingService)//, IDialogService dialogService
+        public GearListViewModel(User user, GearTrackingService gearTrackingService)
         {
             Name = "GearList";
-            _navigator = navigator;
             _gearTrackingService = gearTrackingService;
             _user = user;
-            //_dialogService = dialogService;
         }
 
         public ICommand LoadItemsCommand

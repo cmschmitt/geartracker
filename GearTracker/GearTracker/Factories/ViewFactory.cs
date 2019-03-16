@@ -26,12 +26,29 @@ namespace GearTracker.Factories
             _map[typeof(TViewModel)] = typeof(TView);
         }
 
+        public void RegisterMaster<TViewModel, TView>()
+            where TViewModel : class, IViewModel
+            where TView : MasterDetailPage
+        {
+            _map[typeof(TViewModel)] = typeof(TView);
+        }
+
         public Page Resolve<TViewModel>()
             where TViewModel : class, IViewModel
         {
             TViewModel viewModel = _componentContext.Resolve<TViewModel>();
             var viewType = _map[typeof(TViewModel)];
             var view = _componentContext.Resolve(viewType) as Page;
+            view.BindingContext = viewModel;
+            return view;
+        }
+
+        public MasterDetailPage ResolveMaster<TViewModel>()
+            where TViewModel : class, IViewModel
+        {
+            TViewModel viewModel = _componentContext.Resolve<TViewModel>();
+            var viewType = _map[typeof(TViewModel)];
+            var view = _componentContext.Resolve(viewType) as MasterDetailPage;
             view.BindingContext = viewModel;
             return view;
         }

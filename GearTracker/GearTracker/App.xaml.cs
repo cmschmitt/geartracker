@@ -6,6 +6,7 @@ using GearTracker.Modules;
 using GearTracker.Interfaces;
 using GearTracker.ViewModels;
 using GearTracker.Views;
+using GearTracker.DataAccess.Entities;
 
 [assembly: XamlCompilation (XamlCompilationOptions.Compile)]
 namespace GearTracker
@@ -31,14 +32,23 @@ namespace GearTracker
 
         private void ConfigureApplication(IViewFactory viewFactory)
         {
-            var mainPage = viewFactory.Resolve<LoginViewModel>();
-            var navPage = new NavigationPage(mainPage);
-            MainPage = navPage;
+            ////Handle when your app starts
+            var masterPage = viewFactory.ResolveMaster<MainViewModel>();
+            masterPage.Master = viewFactory.Resolve<MainMasterViewModel>();
+            masterPage.Detail = new NavigationPage(viewFactory.Resolve<MainDetailViewModel>());
+            var user = _container.Resolve<User>();
+            if (user.Id == 0)
+            {
+                masterPage.Detail = new NavigationPage(viewFactory.Resolve<LoginViewModel>());
+            }
+            MainPage = masterPage;
         }
 
         private void RegisterViews(IViewFactory viewFactory)
         {
-            //viewFactory.Register<MainViewModel, MainView>();
+            viewFactory.Register<MainViewModel, Main>();
+            viewFactory.Register<MainDetailViewModel, MainDetail>();
+            viewFactory.Register<MainMasterViewModel, MainMaster>();
             viewFactory.Register<LoginViewModel, LoginView>();
             viewFactory.Register<GearListViewModel, GearListView>();
         }

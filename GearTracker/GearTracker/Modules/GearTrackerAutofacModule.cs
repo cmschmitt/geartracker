@@ -37,17 +37,19 @@ string libraryPath = Path.Combine (documentsPath, "..", "Library"); // Library f
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));
             builder.RegisterType<GearTrackingContext>().WithParameter(new TypedParameter(typeof(string), dbPath));
             builder.RegisterType<ViewFactory>().As<IViewFactory>().SingleInstance();
-            builder.RegisterType<Navigator>().As<INavigator>().SingleInstance();
             builder.RegisterType<GearTrackingService>().SingleInstance();
-            builder.Register<INavigation>(context => App.Current.MainPage.Navigation).SingleInstance();
-            builder.RegisterType<MainView>().SingleInstance();
-            builder.RegisterType<MainViewModel>().SingleInstance();
             builder.RegisterType<LoginView>().SingleInstance();
             builder.RegisterType<LoginViewModel>().SingleInstance();
             builder.RegisterType<GearListView>().SingleInstance();
             builder.RegisterType<GearListViewModel>().SingleInstance();
-            //builder.Register(c => c.Resolve<User>());
             builder.RegisterType<User>().SingleInstance();
+            builder.Register<INavigation>(context => Application.Current.MainPage.Navigation).SingleInstance();
+            builder.RegisterType<Main>().SingleInstance();
+            builder.RegisterType<MainViewModel>().SingleInstance();
+            builder.RegisterType<MainDetail>().SingleInstance();
+            builder.RegisterType<MainDetailViewModel>().SingleInstance();
+            builder.RegisterType<MainMaster>().SingleInstance();
+            builder.RegisterType<MainMasterViewModel>().SingleInstance();
         }
     }
 }

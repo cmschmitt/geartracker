@@ -10,7 +10,6 @@
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml" />
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)MainView.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
@@ -23,34 +22,55 @@
     <Compile Include="$(MSBuildThisFileDirectory)DataAccess\Entities\User.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataAccess\GearTrackingContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataAccess\Repository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\BehaviorBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\EventToCommandBehavior.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Factories\ViewFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IDialogService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\INavigator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataAccess\Interfaces\IRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IViewFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)MainView.xaml.cs">
-      <DependentUpon>MainView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Modules\GearTrackerAutofacModule.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\GearTrackingService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\Navigator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BaseViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\GearListViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MainMasterViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ItemViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LoginViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MainDetailViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MainViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\GearListView.xaml.cs">
       <DependentUpon>GearListView.xaml</DependentUpon>
-      <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Main.xaml.cs">
+      <DependentUpon>Main.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\MainDetail.xaml.cs">
+      <DependentUpon>MainDetail.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\MainMaster.xaml.cs">
+      <DependentUpon>MainMaster.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\MainMenuItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\GearListView.xaml">
@@ -59,7 +79,19 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\LoginView.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Main.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MainMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MainDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>

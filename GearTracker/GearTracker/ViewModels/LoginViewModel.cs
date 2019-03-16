@@ -15,13 +15,14 @@ namespace GearTracker.ViewModels
         public string Password { get; set; }
         private User _user { get; set; }
         private GearTrackingService _gearTrackingService;
-        public LoginViewModel(User user, INavigator navigator, IDialogService dialogService, GearTrackingService gearTrackingService)
+        private IViewFactory _viewFactory;
+        public LoginViewModel(User user, IDialogService dialogService, GearTrackingService gearTrackingService, IViewFactory viewFactory)
         {
             Name = "Login";
-            _navigator = navigator;
             _dialogService = dialogService;
             _gearTrackingService = gearTrackingService;
             _user = user;
+            _viewFactory = viewFactory;
         }
         public ICommand ValidateLogin
         {
@@ -45,11 +46,11 @@ namespace GearTracker.ViewModels
                         }
                         else
                         {
-                            //Update User singleton before creating new instance of GearListViewModel
+                            //Update User singleton before creating new instance of MainDetailViewModel
                             _user.Id = user.Id;
                             _user.Name = user.Name;
                             _user.Password = user.Password;
-                            await _navigator.PushAsync<GearListViewModel>();
+                            ((MasterDetailPage)Application.Current.MainPage).Detail = new NavigationPage(_viewFactory.Resolve<MainDetailViewModel>());
                         }
                     }
                 });

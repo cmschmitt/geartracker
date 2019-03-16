@@ -44,12 +44,12 @@ string libraryPath = Path.Combine (documentsPath, "..", "Library"); // Library f
             builder.RegisterType<GearListViewModel>().SingleInstance();
             builder.RegisterType<User>().SingleInstance();
             builder.Register<INavigation>(context => Application.Current.MainPage.Navigation).SingleInstance();
-            builder.RegisterType<Main>().SingleInstance();
+            builder.RegisterType<MainView>().SingleInstance();
             builder.RegisterType<MainViewModel>().SingleInstance();
             builder.RegisterType<MainDetail>().SingleInstance();
             builder.RegisterType<MainDetailViewModel>().SingleInstance();
-            builder.RegisterType<MainMaster>().SingleInstance();
-            builder.RegisterType<MainMasterViewModel>().SingleInstance();
+            builder.RegisterType<NavigationMenuView>().SingleInstance();
+            builder.RegisterType<NavigationMenuViewModel>().SingleInstance();
         }
     }
 }

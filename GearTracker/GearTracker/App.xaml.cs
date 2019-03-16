@@ -34,7 +34,7 @@ namespace GearTracker
         {
             ////Handle when your app starts
             var masterPage = viewFactory.ResolveMaster<MainViewModel>();
-            masterPage.Master = viewFactory.Resolve<MainMasterViewModel>();
+            masterPage.Master = viewFactory.Resolve<NavigationMenuViewModel>();
             masterPage.Detail = new NavigationPage(viewFactory.Resolve<MainDetailViewModel>());
             var user = _container.Resolve<User>();
             if (user.Id == 0)
@@ -46,9 +46,9 @@ namespace GearTracker
 
         private void RegisterViews(IViewFactory viewFactory)
         {
-            viewFactory.Register<MainViewModel, Main>();
+            viewFactory.Register<MainViewModel, MainView>();
             viewFactory.Register<MainDetailViewModel, MainDetail>();
-            viewFactory.Register<MainMasterViewModel, MainMaster>();
+            viewFactory.Register<NavigationMenuViewModel, NavigationMenuView>();
             viewFactory.Register<LoginViewModel, LoginView>();
             viewFactory.Register<GearListViewModel, GearListView>();
         }

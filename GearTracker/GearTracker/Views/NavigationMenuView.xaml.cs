@@ -13,9 +13,9 @@ using Xamarin.Forms.Xaml;
 namespace GearTracker.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainMaster : ContentPage
+    public partial class NavigationMenuView : ContentPage
     {
-        public MainMaster()
+        public NavigationMenuView()
         {
             InitializeComponent();
         }

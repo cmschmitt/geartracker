@@ -11,11 +11,16 @@ namespace GearTracker.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
-        public string UserName { get; set; }
-        public string Password { get; set; }
+        //TODO:Remove default username and password.
         private User _user { get; set; }
         private GearTrackingService _gearTrackingService;
         private IViewFactory _viewFactory;
+
+
+        public string UserName { get; set; } = "johndoe";
+        public string Password { get; set; } = "password";
+
+
         public LoginViewModel(User user, IDialogService dialogService, GearTrackingService gearTrackingService, IViewFactory viewFactory)
         {
             Name = "Login";
@@ -24,6 +29,8 @@ namespace GearTracker.ViewModels
             _user = user;
             _viewFactory = viewFactory;
         }
+
+
         public ICommand ValidateLogin
         {
             get

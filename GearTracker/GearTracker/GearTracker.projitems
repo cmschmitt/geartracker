@@ -35,7 +35,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Services\Navigator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BaseViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\GearListViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MainMasterViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\NavigationMenuViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ItemViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LoginViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MainDetailViewModel.cs" />
@@ -47,19 +47,19 @@
       <DependentUpon>LoginView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Main.xaml.cs">
-      <DependentUpon>Main.xaml</DependentUpon>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\MainDetail.xaml.cs">
       <DependentUpon>MainDetail.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\MainMaster.xaml.cs">
-      <DependentUpon>MainMaster.xaml</DependentUpon>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\NavigationMenuView.xaml.cs">
+      <DependentUpon>NavigationMenuView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\MainMenuItem.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\MainMenuItem.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -79,13 +79,13 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Main.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MainMaster.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\NavigationMenuView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>

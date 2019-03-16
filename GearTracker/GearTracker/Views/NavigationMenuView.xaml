@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GearTracker.Views.MainMaster"
+             x:Class="GearTracker.Views.NavigationMenuView"
              Title="Master"
              xmlns:local="clr-namespace:GearTracker.Views"
              xmlns:ext="clr-namespace:GearTracker.Extensions">
@@ -10,7 +10,7 @@
               SeparatorVisibility="None"
               HasUnevenRows="true"
               ItemsSource="{Binding MenuItems, Mode=TwoWay, UpdateSourceEventName=NotifyPropertyChanged}"
-              SelectedItem="{Binding SelectedPage}">
+              SelectedItem="{Binding SelectedMenuItem}">
             <ListView.Behaviors>
                 <ext:EventToCommandBehavior EventName="ItemSelected" Command="{Binding NavigateToPage}"/>
             </ListView.Behaviors>

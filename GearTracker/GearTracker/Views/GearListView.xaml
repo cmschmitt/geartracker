@@ -4,7 +4,8 @@
              x:Class="GearTracker.Views.GearListView"
              xmlns:con="clr-namespace:GearTracker.Converters"
              NavigationPage.HasBackButton="False"
-             NavigationPage.HasNavigationBar="True">
+             NavigationPage.HasNavigationBar="True"
+             xmlns:ext="clr-namespace:GearTracker.Extensions">
     <ContentPage.Resources>
         <ResourceDictionary>
             <con:BoolToColorConverter x:Key="boolToColor"/>
@@ -12,7 +13,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <StackLayout>
-        <ListView x:Name="gearListView" IsRefreshing="{Binding IsLoading, Mode=OneWay}" ItemsSource="{Binding Items}" Margin="20">
+        <ListView x:Name="gearListView" IsRefreshing="{Binding IsLoading, Mode=TwoWay, UpdateSourceEventName=NotifyPropertyChanged}" ItemsSource="{Binding Items, Mode=OneWay, UpdateSourceEventName=NotifyPropertyChanged}" Margin="20">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -46,6 +47,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Text="Load" Command="{Binding LoadItemsCommand}"/>
+        <!--<Button Text="Load" Command="{Binding LoadItemsCommand}"/>-->
     </StackLayout>
 </ContentPage>

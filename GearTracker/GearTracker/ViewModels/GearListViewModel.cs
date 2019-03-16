@@ -20,6 +20,9 @@ namespace GearTracker.ViewModels
             Name = "GearList";
             _gearTrackingService = gearTrackingService;
             _user = user;
+            //IsLoading = true;
+            //NotifyPropertyChanged("IsLoading");
+            LoadItems();
         }
 
         public ICommand LoadItemsCommand
@@ -37,17 +40,13 @@ namespace GearTracker.ViewModels
         {
             try
             {
-                IsLoading = true;
-                NotifyPropertyChanged("IsLoading");
                 Items = await _gearTrackingService.GetUserItemsAsync(_user.Id);
-                IsLoading = false;
-                NotifyPropertyChanged("IsLoading");
+                //IsLoading = false;
+                //NotifyPropertyChanged("IsLoading");
                 NotifyPropertyChanged("Items");
-
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }

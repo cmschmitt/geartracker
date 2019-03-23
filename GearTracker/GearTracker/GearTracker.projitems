@@ -17,6 +17,7 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Converters\BoolToColorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\InverseBoolConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomControls\NativeListView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataAccess\Entities\Item.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataAccess\Entities\TrackingHistory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataAccess\Entities\User.cs" />
@@ -24,6 +25,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)DataAccess\Repository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\BehaviorBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\EventToCommandBehavior.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Events\MenuItemSelectedEvent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Factories\ViewFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IDialogService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\INavigator.cs" />
@@ -64,6 +66,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Extensions\Events\" />
     <Folder Include="$(MSBuildThisFileDirectory)Models\" />
   </ItemGroup>
   <ItemGroup>

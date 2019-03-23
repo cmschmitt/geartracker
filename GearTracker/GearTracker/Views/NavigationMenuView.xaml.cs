@@ -15,9 +15,12 @@ namespace GearTracker.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NavigationMenuView : ContentPage
     {
+        
         public NavigationMenuView()
         {
             InitializeComponent();
         }
+
+        
     }
 }

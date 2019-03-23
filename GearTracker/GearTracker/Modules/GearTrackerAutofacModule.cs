@@ -7,6 +7,7 @@ using GearTracker.Interfaces;
 using GearTracker.Services;
 using GearTracker.ViewModels;
 using GearTracker.Views;
+using Prism.Events;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -50,6 +51,7 @@ string libraryPath = Path.Combine (documentsPath, "..", "Library"); // Library f
             builder.RegisterType<MainDetailViewModel>().SingleInstance();
             builder.RegisterType<NavigationMenuView>().SingleInstance();
             builder.RegisterType<NavigationMenuViewModel>().SingleInstance();
+            builder.RegisterInstance<IEventAggregator>(new EventAggregator());
         }
     }
 }

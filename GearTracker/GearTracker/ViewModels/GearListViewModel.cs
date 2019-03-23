@@ -11,10 +11,13 @@ namespace GearTracker.ViewModels
 {
     public class GearListViewModel : BaseViewModel
     {
-        public List<Item> Items { get; set; }
-        public bool IsLoading { get; set; }
         private GearTrackingService _gearTrackingService;
         private User _user;
+
+        public List<ItemViewModel> Items { get; set; }
+        public bool IsLoading { get; set; }
+
+
         public GearListViewModel(User user, GearTrackingService gearTrackingService)
         {
             Name = "GearList";
@@ -40,7 +43,12 @@ namespace GearTracker.ViewModels
         {
             try
             {
-                Items = await _gearTrackingService.GetUserItemsAsync(_user.Id);
+                var items = await _gearTrackingService.GetUserItemsAsync(_user.Id);
+                Items = new List<ItemViewModel>();
+                foreach (var i in items)
+                {
+                    Items.Add(new ItemViewModel(i));
+                }
                 //IsLoading = false;
                 //NotifyPropertyChanged("IsLoading");
                 NotifyPropertyChanged("Items");

@@ -32,20 +32,23 @@ namespace GearTracker.DataAccess
             if (createDatabase)
                 CreateDatabase();
 #if DEBUG
-            File.Delete(dbPath);
-            CreateDatabase();
+            if (!createDatabase)
+            {
+                File.Delete(dbPath);
+                CreateDatabase();
+            }
 #endif
             Items = new Repository<Item>(_dbConnection);
             TrackingHistories = new Repository<TrackingHistory>(_dbConnection);
             Users = new Repository<User>(_dbConnection);
         }
 
-        private void CreateDatabase()
+        private async void CreateDatabase()
         {
             try
             {
                 var users = new List<User> { new User { Id = 1, Name = "johndoe", Password = "password" } };
-                _dbConnection.CreateTablesAsync<Item, TrackingHistory, User>();
+                await _dbConnection.CreateTablesAsync<Item, TrackingHistory, User>();
                 var items = new List<Item>
                 {
                     new Item
@@ -111,9 +114,9 @@ namespace GearTracker.DataAccess
                         Location = "1234 Some St, Somewhere, CA 61234"
                     }
                 };
-                _dbConnection.InsertAllAsync(users);
-                _dbConnection.InsertAllAsync(items);
-                _dbConnection.InsertAllAsync(histories);
+                await _dbConnection.InsertAllAsync(users);
+                await _dbConnection.InsertAllAsync(items);
+                await _dbConnection.InsertAllAsync(histories);
             }
             catch (Exception ex)
             {

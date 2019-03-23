@@ -5,7 +5,8 @@
              xmlns:con="clr-namespace:GearTracker.Converters"
              NavigationPage.HasBackButton="False"
              NavigationPage.HasNavigationBar="True"
-             xmlns:ext="clr-namespace:GearTracker.Extensions">
+             xmlns:ext="clr-namespace:GearTracker.Extensions"
+             xmlns:custom="clr-namespace:GearTracker.CustomControls">
     <ContentPage.Resources>
         <ResourceDictionary>
             <con:BoolToColorConverter x:Key="boolToColor"/>
@@ -13,35 +14,47 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <StackLayout>
-        <ListView x:Name="gearListView" IsRefreshing="{Binding IsLoading, Mode=TwoWay, UpdateSourceEventName=NotifyPropertyChanged}" ItemsSource="{Binding Items, Mode=OneWay, UpdateSourceEventName=NotifyPropertyChanged}" Margin="20">
+        <ListView x:Name="gearListView" 
+                  IsRefreshing="{Binding IsLoading, Mode=TwoWay, UpdateSourceEventName=NotifyPropertyChanged}" 
+                  ItemsSource="{Binding Items, Mode=OneWay, UpdateSourceEventName=NotifyPropertyChanged}" 
+                  HasUnevenRows="True"
+                  Margin="20">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell>
-                        <Grid Margin="5">
+                    <ViewCell Height="100">
+                        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="5">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
+                                <ColumnDefinition />
                             </Grid.ColumnDefinitions>
-                            <!--<Label Text="&#xf058;"
-                                   FontSize="Small" 
-                                   TextColor="{Binding CheckedIn, Converter={StaticResource boolToColor}}" 
-                                   VerticalOptions="Center" 
-                                   HorizontalOptions="Center"
-                                   Grid.Column="0"
-                                   IsVisible="{Binding CheckedIn}"
-                                   FontFamily="{StaticResource FontAwesome}">
-                            </Label>
-                            <Label Text="&#xf359;" 
-                                   FontSize="Small" 
-                                   TextColor="{Binding CheckedIn, Converter={StaticResource boolToColor}}" 
-                                   VerticalOptions="Center" 
-                                   HorizontalOptions="Center"
-                                   Grid.Column="0"
-                                   IsVisible="{Binding CheckedIn, Converter={StaticResource inverseBool}}"
-                                   FontFamily="{StaticResource FontAwesome}">
-                            </Label>-->
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                            </Grid.RowDefinitions>
                             <Label Text="{Binding Name}"
                                    Grid.Column="0"
+                                   Grid.Row="0"
                                    VerticalOptions="Center"/>
+                            <Button Grid.Column="1" Grid.Row="0" HorizontalOptions="EndAndExpand"/>
+                            <ListView x:Name="lstTrackingHistory" 
+                                      IsVisible="{Binding IsHistoryVisible, Mode=OneWay, UpdateSourceEventName=NotifyPropertyChanged}" 
+                                      ItemsSource="{Binding TrackingHistories, Mode=OneWay, UpdateSourceEventName=NotifyPropertyChanged}"
+                                      Grid.Column="0"
+                                      Grid.Row="1">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Grid Margin="5">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>
+                                                <Label Text="{Binding .}"
+                                                       Grid.Column="0"
+                                                       VerticalOptions="Center"/>       
+                                            </Grid>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>

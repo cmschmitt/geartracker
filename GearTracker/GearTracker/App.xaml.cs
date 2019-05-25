@@ -51,6 +51,7 @@ namespace GearTracker
             viewFactory.Register<NavigationMenuViewModel, NavigationMenuView>();
             viewFactory.Register<LoginViewModel, LoginView>();
             viewFactory.Register<GearListViewModel, GearListView>();
+            viewFactory.Register<TrackingHistoryListViewModel, TrackingHistoryListView>();
         }
 
         protected override void OnStart ()

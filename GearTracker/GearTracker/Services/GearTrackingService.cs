@@ -29,6 +29,11 @@ namespace GearTracker.Services
         {
             return await _gearTrackingContext.Users.FindSingle(u => u.Name == userName && u.Password == password);
         }
-        
+
+        public async Task<List<TrackingHistory>> GetHistoriesByItemId(int itemId)
+        {
+            var test = await _gearTrackingContext.TrackingHistories.Find(h => h.ItemId == itemId);
+            return test;
+        }
     }
 }

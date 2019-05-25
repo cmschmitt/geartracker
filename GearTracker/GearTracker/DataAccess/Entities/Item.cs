@@ -10,6 +10,7 @@ namespace GearTracker.DataAccess.Entities
         public int UserId { get; set; }
         public string Name { get; set; }
         public string Rfid { get; set; }
+        //public List<TrackingHistory> TrackingHistories { get; set; }
     }
 }
 

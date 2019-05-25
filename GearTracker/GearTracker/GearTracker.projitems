@@ -17,6 +17,7 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Converters\BoolToColorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\InverseBoolConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\SelectedItemConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CustomControls\NativeListView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataAccess\Entities\Item.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataAccess\Entities\TrackingHistory.cs" />
@@ -42,6 +43,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LoginViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MainDetailViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MainViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TrackingHistoryListViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\GearListView.xaml.cs">
       <DependentUpon>GearListView.xaml</DependentUpon>
     </Compile>
@@ -62,6 +64,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\MainMenuItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\TrackingHistoryListView.xaml.cs">
+      <DependentUpon>TrackingHistoryListView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -95,6 +101,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MainDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\TrackingHistoryListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>

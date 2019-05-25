@@ -34,11 +34,16 @@ namespace GearTracker.ViewModels
             {
                 return new Command(() =>
                 {
-                    var masterPage = Application.Current.MainPage as MasterDetailPage;
-                    var viewFactoryType = _viewFactory.GetType();
-                    var resolveMethod = viewFactoryType.GetMethod("Resolve").MakeGenericMethod(SelectedMenuItem.TargetType);
-                    masterPage.Detail = new NavigationPage((Page)resolveMethod.Invoke(_viewFactory, null));
-                    _eventAggregator.GetEvent<MenuItemSelectedEvent>().Publish();
+                    if (SelectedMenuItem != null)
+                    {
+                        var masterPage = Application.Current.MainPage as MasterDetailPage;
+                        var viewFactoryType = _viewFactory.GetType();
+                        var resolveMethod = viewFactoryType.GetMethod("Resolve").MakeGenericMethod(SelectedMenuItem.TargetType);
+                        masterPage.Detail = new NavigationPage((Page)resolveMethod.Invoke(_viewFactory, null));
+                        _eventAggregator.GetEvent<MenuItemSelectedEvent>().Publish();
+                        SelectedMenuItem = null;
+                        NotifyPropertyChanged(nameof(SelectedMenuItem));
+                    }
                 });
             }
         }

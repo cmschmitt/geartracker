@@ -10,7 +10,7 @@
               SeparatorVisibility="None"
               HasUnevenRows="true"
               ItemsSource="{Binding MenuItems, Mode=TwoWay, UpdateSourceEventName=NotifyPropertyChanged}"
-              SelectedItem="{Binding SelectedMenuItem}">
+              SelectedItem="{Binding SelectedMenuItem, Mode=TwoWay, UpdateSourceEventName=NotifyPropertyChanged}">
             <ListView.Behaviors>
                 <ext:EventToCommandBehavior EventName="ItemSelected" Command="{Binding NavigateToPage}"/>
             </ListView.Behaviors>

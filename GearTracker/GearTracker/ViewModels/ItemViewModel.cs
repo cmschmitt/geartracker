@@ -7,6 +7,30 @@ namespace GearTracker.ViewModels
 {
     public class ItemViewModel
     {
+        //public string Name { get; set; }
+        
+        //public List<string> History { get; set; }
+
+        //public ItemViewModel(string name, List<string> history)
+        //{
+        //    Name = name;
+        //    History = history;
+        //}
+
+        //public static List<ItemViewModel> GetList()
+        //{
+        //    var l = new List<ItemViewModel>();
+        //    l.Add(new ItemViewModel("SM57", new List<string> { "test1", "test2" }));
+        //    l.Add(new ItemViewModel("SM57", new List<string> { "test1", "test2" }));
+        //    l.Add(new ItemViewModel("SM57", new List<string> { "test1", "test2" }));
+        //    l.Add(new ItemViewModel("SM57", new List<string> { "test1", "test2" }));
+        //    l.Add(new ItemViewModel("SM57", new List<string> { "test1", "test2" }));
+        //    l.Add(new ItemViewModel("SM57", new List<string> { "test1", "test2" }));
+        //    l.Add(new ItemViewModel("SM57", new List<string> { "test1", "test2" }));
+        //    l.Add(new ItemViewModel("SM57", new List<string> { "test1", "test2" }));
+        //    l.Add(new ItemViewModel("SM57", new List<string> { "test1", "test2" }));
+        //    return l;
+        //}
         private Item _item;
 
         public int Id
@@ -29,7 +53,7 @@ namespace GearTracker.ViewModels
             get { return _item.Rfid; }
             set { _item.Rfid = value; }
         }
-        public List<string> TrackingHistories { get; set; } = new List<string> { "aldjkf" };
+        public List<TrackingHistory> TrackingHistories { get; set; }
         public bool IsHistoryVisible { get; set; } = true;
 
         public ItemViewModel(Item item)

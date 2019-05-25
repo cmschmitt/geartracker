@@ -11,55 +11,28 @@
         <ResourceDictionary>
             <con:BoolToColorConverter x:Key="boolToColor"/>
             <con:InverseBoolConverter x:Key="inverseBool" />
+            <con:SelectedItemConverter x:Key="SelectedItemConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <StackLayout>
+        <!--<custom:NativeListView x:Name="gearListView" VerticalOptions="FillAndExpand" Items="{Binding Items, Mode=OneWay, UpdateSourceEventName=NotifyPropertyChanged}"/>-->
         <ListView x:Name="gearListView" 
                   IsRefreshing="{Binding IsLoading, Mode=TwoWay, UpdateSourceEventName=NotifyPropertyChanged}" 
                   ItemsSource="{Binding Items, Mode=OneWay, UpdateSourceEventName=NotifyPropertyChanged}" 
+                  SelectedItem="{Binding CurrentItem, Mode=TwoWay, UpdateSourceEventName=NotifyPropertyChanged}"
                   HasUnevenRows="True"
                   Margin="20">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell Height="100">
-                        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="5">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="50"/>
-                            </Grid.RowDefinitions>
-                            <Label Text="{Binding Name}"
-                                   Grid.Column="0"
-                                   Grid.Row="0"
+                        <Label Text="{Binding Name}"
                                    VerticalOptions="Center"/>
-                            <Button Grid.Column="1" Grid.Row="0" HorizontalOptions="EndAndExpand"/>
-                            <ListView x:Name="lstTrackingHistory" 
-                                      IsVisible="{Binding IsHistoryVisible, Mode=OneWay, UpdateSourceEventName=NotifyPropertyChanged}" 
-                                      ItemsSource="{Binding TrackingHistories, Mode=OneWay, UpdateSourceEventName=NotifyPropertyChanged}"
-                                      Grid.Column="0"
-                                      Grid.Row="1">
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <ViewCell>
-                                            <Grid Margin="5">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition />
-                                                </Grid.ColumnDefinitions>
-                                                <Label Text="{Binding .}"
-                                                       Grid.Column="0"
-                                                       VerticalOptions="Center"/>       
-                                            </Grid>
-                                        </ViewCell>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
-                        </Grid>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
+            <ListView.Behaviors>
+                <ext:EventToCommandBehavior EventName="ItemSelected" Command="{Binding LoadHistoriesCommand}" Converter="{StaticResource SelectedItemConverter}"/>
+            </ListView.Behaviors>
         </ListView>
-        <!--<Button Text="Load" Command="{Binding LoadItemsCommand}"/>-->
     </StackLayout>
 </ContentPage>

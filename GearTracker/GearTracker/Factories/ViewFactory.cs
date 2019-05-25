@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Autofac.Core;
 using GearTracker.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -37,6 +38,16 @@ namespace GearTracker.Factories
             where TViewModel : class, IViewModel
         {
             TViewModel viewModel = _componentContext.Resolve<TViewModel>();
+            var viewType = _map[typeof(TViewModel)];
+            var view = _componentContext.Resolve(viewType) as Page;
+            view.BindingContext = viewModel;
+            return view;
+        }
+
+        public Page ResolveWithParameters<TViewModel>(IEnumerable<Parameter> parameters)
+            where TViewModel : class, IViewModel
+        {
+            TViewModel viewModel = _componentContext.Resolve<TViewModel>(parameters);
             var viewType = _map[typeof(TViewModel)];
             var view = _componentContext.Resolve(viewType) as Page;
             view.BindingContext = viewModel;

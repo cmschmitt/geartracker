@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GearTracker.CustomControls;
+using GearTracker.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +17,12 @@ namespace GearTracker.Views
 		public GearListView ()
 		{
 			InitializeComponent();
-		}
+            //gearListView = new NativeListView
+            //{
+            //    Items = ItemViewModel.GetList(),
+            //    VerticalOptions = LayoutOptions.FillAndExpand
+            //};
+        }
 
 	}
 }

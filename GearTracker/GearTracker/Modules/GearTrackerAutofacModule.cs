@@ -43,6 +43,8 @@ string libraryPath = Path.Combine (documentsPath, "..", "Library"); // Library f
             builder.RegisterType<LoginViewModel>().SingleInstance();
             builder.RegisterType<GearListView>().SingleInstance();
             builder.RegisterType<GearListViewModel>().SingleInstance();
+            builder.RegisterType<TrackingHistoryListView>().SingleInstance();
+            builder.RegisterType<TrackingHistoryListViewModel>().SingleInstance();
             builder.RegisterType<User>().SingleInstance();
             builder.Register<INavigation>(context => Application.Current.MainPage.Navigation).SingleInstance();
             builder.RegisterType<MainView>().SingleInstance();
@@ -52,6 +54,7 @@ string libraryPath = Path.Combine (documentsPath, "..", "Library"); // Library f
             builder.RegisterType<NavigationMenuView>().SingleInstance();
             builder.RegisterType<NavigationMenuViewModel>().SingleInstance();
             builder.RegisterInstance<IEventAggregator>(new EventAggregator());
+            builder.RegisterType<Item>();
         }
     }
 }

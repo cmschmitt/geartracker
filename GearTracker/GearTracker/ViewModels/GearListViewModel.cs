@@ -1,4 +1,6 @@
-﻿using GearTracker.DataAccess.Entities;
+﻿using Autofac;
+using Autofac.Core;
+using GearTracker.DataAccess.Entities;
 using GearTracker.Interfaces;
 using GearTracker.Services;
 using System;
@@ -13,28 +15,32 @@ namespace GearTracker.ViewModels
     {
         private GearTrackingService _gearTrackingService;
         private User _user;
+        private IViewFactory _viewFactory;
 
-        public List<ItemViewModel> Items { get; set; }
+        public List<Item> Items { get; set; }
         public bool IsLoading { get; set; }
+        public Item CurrentItem { get; set; }
 
-
-        public GearListViewModel(User user, GearTrackingService gearTrackingService)
+        public GearListViewModel(User user, GearTrackingService gearTrackingService, IViewFactory viewFactory)
         {
             Name = "GearList";
             _gearTrackingService = gearTrackingService;
             _user = user;
+            _viewFactory = viewFactory;
             //IsLoading = true;
             //NotifyPropertyChanged("IsLoading");
             LoadItems();
         }
 
-        public ICommand LoadItemsCommand
+        public ICommand LoadHistoriesCommand
         {
             get
             {
-                return new Command(() =>
+                return new Command<Item>(i =>
                 {
-                    LoadItems();
+                    var parameters = new List<Parameter> { new NamedParameter("item", i) };
+                    var masterPage = Application.Current.MainPage as MasterDetailPage;
+                    masterPage.Detail = new NavigationPage(_viewFactory.ResolveWithParameters<TrackingHistoryListViewModel>(parameters));
                 });
             }
         }
@@ -43,14 +49,9 @@ namespace GearTracker.ViewModels
         {
             try
             {
-                var items = await _gearTrackingService.GetUserItemsAsync(_user.Id);
-                Items = new List<ItemViewModel>();
-                foreach (var i in items)
-                {
-                    Items.Add(new ItemViewModel(i));
-                }
-                //IsLoading = false;
-                //NotifyPropertyChanged("IsLoading");
+                Items = await _gearTrackingService.GetUserItemsAsync(_user.Id);
+                IsLoading = false;
+                NotifyPropertyChanged("IsLoading");
                 NotifyPropertyChanged("Items");
             }
             catch (Exception ex)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Autofac.Core;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
@@ -12,6 +13,9 @@ namespace GearTracker.Interfaces
             where TView : Page;
 
         Page Resolve<TViewModel>()
+            where TViewModel : class, IViewModel;
+
+        Page ResolveWithParameters<TViewModel>(IEnumerable<Parameter> parameters)
             where TViewModel : class, IViewModel;
 
         void RegisterMaster<TViewModel, TView>()

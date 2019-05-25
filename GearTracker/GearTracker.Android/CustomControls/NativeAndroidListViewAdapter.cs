@@ -21,6 +21,10 @@ namespace GearTracker.Droid.CustomControls
 
         public IEnumerable<ItemViewModel> Items
         {
+            get
+            {
+                return tableItems;
+            }
             set
             {
                 tableItems = value.ToList();
@@ -61,10 +65,10 @@ namespace GearTracker.Droid.CustomControls
                 // no view to re-use, create new
                 view = context.LayoutInflater.Inflate(Resource.Layout.NativeAndroidListViewCell, null);
             }
-            //view.FindViewById<TextView>(Resource.Id.Text1).Text = item.Name;
-            //view.FindViewById<TextView>(Resource.Id.Text2).Text = item.TrackingHistories.FirstOrDefault();
-
-            //// grab the old image and dispose of it
+            view.FindViewById<TextView>(Resource.Id.Text1).Text = item.Name;
+            //view.FindViewById<TextView>(Resource.Id.Text2).Text = string.Join("\n", item.History);
+            //view.FindViewById<TextView>(Resource.Id.Image) = item.ImageFilename;
+            // grab the old image and dispose of it
             //if (view.FindViewById<ImageView>(Resource.Id.Image).Drawable != null)
             //{
             //    using (var image = view.FindViewById<ImageView>(Resource.Id.Image).Drawable as BitmapDrawable)
@@ -80,14 +84,15 @@ namespace GearTracker.Droid.CustomControls
             //    }
             //}
 
-            //// If a new image is required, display it
+            // If a new image is required, display it
             //if (!String.IsNullOrWhiteSpace(item.ImageFilename))
             //{
-            //    context.Resources.GetBitmapAsync(item.ImageFilename).ContinueWith((t) => {
+            //    context.Resources.GetBitmapAsync(item.ImageFilename).ContinueWith((t) =>
+            //    {
             //        var bitmap = t.Result;
             //        if (bitmap != null)
             //        {
-            //            view.FindViewById<ImageView>(Resource.Id.Image).SetImageBitmap(bitmap);
+            //            view.FindViewById<ImageView>(Resource.Id.Image) = item.ImageFilename;
             //            bitmap.Dispose();
             //        }
             //    }, TaskScheduler.FromCurrentSynchronizationContext());
